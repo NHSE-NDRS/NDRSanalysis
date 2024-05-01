@@ -12,7 +12,7 @@ The functions currently available in the package are:
 
 ### Built With
 
-[![R v4.3.1](https://img.shields.io/badge/R-v4.3.1-blue.svg)](https://cran.r-project.org/bin/windows/base/old/)
+[![R v4.3.3](https://img.shields.io/badge/R-v4.3.1-blue.svg)](https://cran.r-project.org/bin/windows/base/old/)
 
 ## Installation
 
