@@ -1,0 +1,15 @@
+Package: NDRSanalysis
+Type: Package
+Title: NDRSanalysis: A suite of useful functions for use in NDRS
+    Analysis
+Version: 0.1.0
+Authors@R: c(
+    person("Zahra","Ahmed", role = c("aut","cre"), email = "zahra.ahmed21@nhs.net")
+    )
+Maintainer: Claire Welsh <claire.welsh8@nhs.net>
+Description: A collection of functions to make analysis of data in NDRS
+    faster, safer and less repetitive.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.1
