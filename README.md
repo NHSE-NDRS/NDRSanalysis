@@ -25,6 +25,6 @@ library(devtools)
 install_github("NHSE-NDRS/NDRSanalysis")
 ```
 
-### Contact
+## Contact
 
 If you have any questions regarding this repository please contact the team mailbox at [nhsdigital.ndrsanalysis\@nhs.net](mailto:nhsdigital.ndrsanalysis@nhs.net).
