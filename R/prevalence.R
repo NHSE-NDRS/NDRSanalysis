@@ -20,21 +20,24 @@
 #' @import dplyr
 #' @export
 #' @examples
+#' \dontrun{
 #' # Using raw data from rare diseases to calculate the point prevalence
 #' ndrs_prevalence(numerator_data = rare_diseases_raw,
 #'                 denominator_data = ons_mid_year_population_data,
 #'                 end_date = '2020-12-31',
 #'                 rare_diseases_data = TRUE)
-#'
+#'}
 #' @examples
+#' \dontrun{
 #' # Using raw cancer data to calculate 20 year prevalence
 #' ndrs_prevalence(numerator_data = rare_cancer_data,
 #'                 denominator_data = ons_mid_year_population_data,
 #'                 end_date = '2020-06-01',
 #'                 years_before_point = 20,
 #'                 cancer_data = TRUE)
-#'
+#'}
 #' @examples
+#' \dontrun{
 #' # Using raw data from congenital anomalies to calculate the livebirth prevalence
 #' ndrs_prevalence(numerator_data = congenital_anomalies_raw,
 #'                 denominator_data = birth_population_data,
@@ -43,6 +46,7 @@
 #'                 per_people = 10000,
 #'                 conganom_prev_type = 'livebirth',
 #'                 write_csv = TRUE)
+#'}
 ndrs_prevalence <- function(numerator_data,
                             denominator_data,
                             end_date,

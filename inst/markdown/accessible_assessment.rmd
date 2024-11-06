@@ -1,0 +1,97 @@
+---
+title: "Accessible colour assessment"
+author: "NDRS"
+date: "`r Sys.Date()`"
+output: html_document
+params:
+  palette: c("#12436D","#28A197","#801650","#F46A25","#3D3D3D","#A285D1")
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(DT)
+library(colorspace)
+library(dichromat)
+library(recolorize)
+```
+
+If wanting to create accessible visulisations please take the time to read through the [Government Analysis function guide to data vis](https://analysisfunction.civilservice.gov.uk/policy-store/data-visualisation-colours-in-charts/) and try to use as much of the advice as possible. To this end this tool has been created to assess your colour palette in line with advice given by the Government Analysis function (AF).
+## Palette Visualisation
+
+```{r, echo=FALSE}
+palette <- params$palette
+
+contrast_matrix <- function(x, palette) {
+  round(colorspace::contrast_ratio(col = x, col2 = palette),2)
+}
+
+styleTable <- function(data){
+    datatable(data, 
+              options = list(
+                  rowCallback = JS(
+                      "function(row, data) {",
+                      "for(var i = 0; i < data.length; i++) {", 
+                      "if(data[i] > 3) {",
+                      "$('td:eq('+i+')', row).css({'background-color': '#A9CDBC'});",
+                      "}", 
+                      "}", 
+                      "}")
+              )
+    )
+}
+
+scales::show_col(palette)
+```
+
+## Contrast to white
+
+The AF advises that all colours should have contrast ratio of over 3 compared to white background.
+
+
+```{r, echo=FALSE}
+
+contrast_res <- sapply("white", contrast_matrix, palette = palette)
+
+rownames(contrast_res) <- palette
+
+styleTable(contrast_res)
+
+```
+
+## Contrast within palette
+
+It is advised that all adjacent colours achieve a contrast ratio of 3. 
+
+Ideally a plot should not show anymore than 4 colours.
+
+If using hues of a single colour for sequential data be aware that the mid colour will not achieve the required ratio of contrast to the dark and light colours.
+
+
+```{r, echo=FALSE}
+
+
+
+contrast_res <- sapply(palette, contrast_matrix, palette = palette)
+
+rownames(contrast_res) <- colnames(contrast_res)
+
+styleTable(contrast_res)
+
+```
+
+## Consider how your colour palette looks to people who are colour blind
+
+There are 3 main types of colour blindness. Below is a best estimation of what colour blind people are likely to see when viewing your colour palette.
+
+```{r, echo=FALSE}
+protan <- dichromat(palette, type = "protan")
+deutan <- dichromat(palette, type = "deutan")
+tritan <- dichromat(palette, type = "tritan")
+
+# plot for comparison
+layout(matrix(1:4, nrow = 4)); par(mar = rep(1, 4))
+plotColorPalette(palette, main = "Trichromacy")
+plotColorPalette(protan, main = "Protanopia")
+plotColorPalette(deutan, main = "Deutanopia")
+plotColorPalette(tritan, main = "Tritanopia")
+```

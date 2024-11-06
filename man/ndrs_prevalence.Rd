@@ -53,19 +53,22 @@ This functions requires 2 data frames: patient level numerator data and raw ONS 
 An end date is also required to calculate the point prevalence and there are further options such as to calculate livebirth or total birth prevalence for congenital anomalies.
 }
 \examples{
+\dontrun{
 # Using raw data from rare diseases to calculate the point prevalence
 ndrs_prevalence(numerator_data = rare_diseases_raw,
                 denominator_data = ons_mid_year_population_data,
                 end_date = '2020-12-31',
                 rare_diseases_data = TRUE)
-
+}
+\dontrun{
 # Using raw cancer data to calculate 20 year prevalence
 ndrs_prevalence(numerator_data = rare_cancer_data,
                 denominator_data = ons_mid_year_population_data,
                 end_date = '2020-06-01',
                 years_before_point = 20,
                 cancer_data = TRUE)
-
+}
+\dontrun{
 # Using raw data from congenital anomalies to calculate the livebirth prevalence
 ndrs_prevalence(numerator_data = congenital_anomalies_raw,
                 denominator_data = birth_population_data,
@@ -74,4 +77,5 @@ ndrs_prevalence(numerator_data = congenital_anomalies_raw,
                 per_people = 10000,
                 conganom_prev_type = 'livebirth',
                 write_csv = TRUE)
+}
 }

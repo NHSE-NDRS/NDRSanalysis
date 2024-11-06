@@ -12,4 +12,15 @@ Description: A collection of functions to make analysis of data in NDRS
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Imports: 
+    DBI,
+    dplyr,
+    lubridate,
+    PHEindicatormethods,
+    rJava,
+    RJDBC,
+    svDialogs
